@@ -1,0 +1,56 @@
+body {
+    width: 100%;
+    background-color: whitesmoke;
+}
+
+button,
+div,
+form,
+input {
+    margin: 10px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+}
+
+button, input#add-fail {
+    background: #3e99ed;
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+}
+
+
+input#fail-input {
+    padding: 15px 21px;
+    font-size: 16px;
+}
+
+label {
+    display: none;
+}
+
+#buttons-view {
+    clear: both;
+}
+
+form {
+    float: right;
+}
+
+section {
+    float: left;
+    width: 70%;
+}
+
+img, p {
+    float: left;
+}
+
+img {
+    padding: 5px;
+}
