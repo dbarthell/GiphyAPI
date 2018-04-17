@@ -1,6 +1,5 @@
 var fails = ["Golf Fails", "Ski Fails", "Gym Fails"];
 
-
 function displayFailInfo() {
 
     var fail = $(this).attr("data-name");
@@ -13,25 +12,41 @@ function displayFailInfo() {
     }).then(function (response) {
 
         console.log(response);
+        $("#gifs-appear-here").empty();
 
         var results = response.data;
         for (var i = 0; i < results.length; i++) {
-            var failDiv = $("<div class='fail'>");
+
+            var stillDiv = $("<div class='fail'>");
+            var animateDiv = $("<div class='fail'>");
 
             var rating = results[i].rating;
             var displayRating = $("<p>").text("Rating: " + rating);
-            failDiv.append(displayRating);
+            stillDiv.append(displayRating);
 
-            var failImage = $("<img>");
-            failImage.attr("src", results[i].images.fixed_height_still.url);
-            failDiv.append(failImage);
+            var gifStill = $("<img>");
+            $(gifStill).addClass("still");
+            $(gifStill).removeClass("d-none");
+            gifStill.attr("src", results[i].images.fixed_height_still.url);
 
+            var gifAnimate = $("<img>");            
+            gifAnimate.attr("src", results[i].images.fixed_height.url);
+            $(gifAnimate).addClass("animate");
+            $(gifAnimate).removeClass("d-none");
 
-            $("#gifs-appear-here").append(failDiv);
+            stillDiv.append(gifStill);
+            animateDiv.append(gifAnimate);
+
+            animateDiv.hide();
+
+            $("#gifs-appear-here").append(stillDiv);
+            $("#gifs-appear-here").append(animateDiv);
         }
     });
 
 }
+
+
 
 
 function renderButtons() {
@@ -50,16 +65,15 @@ function renderButtons() {
 
 
 $("#add-fail").on("click", function (event) {
+
     event.preventDefault();
-
-    var fail = $("#fail-input").val().trim();
-
+    var fail = $("#fail-input").val();
     fails.push(fail);
-
     renderButtons();
-
+    $('#fail-input').val('');
 });
 
-$(document).on("click", ".fail", displayFailInfo);
 
+$(document).on("click", ".fail", displayFailInfo);
 renderButtons();
+

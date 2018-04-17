@@ -48,9 +48,12 @@ section {
 }
 
 img, p {
+    padding: 5px;
     float: left;
 }
 
-img {
-    padding: 5px;
-}
+
+
+
+
+
