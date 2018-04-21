@@ -77,3 +77,9 @@ $("#add-fail").on("click", function (event) {
 $(document).on("click", ".fail", displayFailInfo);
 renderButtons();
 
+$("<img>").on("click", function() {
+    animateDiv.show();
+    stillDiv.hide();
+    renderButtons();
+});
+
